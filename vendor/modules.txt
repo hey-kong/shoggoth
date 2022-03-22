@@ -47,6 +47,9 @@ github.com/google/go-cmp/cmp/internal/value
 # github.com/google/gofuzz v1.1.0
 ## explicit; go 1.12
 github.com/google/gofuzz
+# github.com/google/uuid v1.1.2
+## explicit
+github.com/google/uuid
 # github.com/googleapis/gnostic v0.5.5
 ## explicit; go 1.12
 github.com/googleapis/gnostic/compiler
@@ -65,6 +68,9 @@ github.com/josharian/intern
 # github.com/json-iterator/go v1.1.12
 ## explicit; go 1.12
 github.com/json-iterator/go
+# github.com/klauspost/cpuid v1.3.1
+## explicit; go 1.12
+github.com/klauspost/cpuid
 # github.com/mailru/easyjson v0.7.6
 ## explicit; go 1.12
 github.com/mailru/easyjson/buffer
@@ -73,6 +79,28 @@ github.com/mailru/easyjson/jwriter
 # github.com/mattn/go-sqlite3 v1.14.9
 ## explicit; go 1.12
 github.com/mattn/go-sqlite3
+# github.com/minio/md5-simd v1.1.0
+## explicit; go 1.14
+github.com/minio/md5-simd
+# github.com/minio/minio-go/v7 v7.0.10
+## explicit; go 1.12
+github.com/minio/minio-go/v7
+github.com/minio/minio-go/v7/pkg/credentials
+github.com/minio/minio-go/v7/pkg/encrypt
+github.com/minio/minio-go/v7/pkg/lifecycle
+github.com/minio/minio-go/v7/pkg/notification
+github.com/minio/minio-go/v7/pkg/replication
+github.com/minio/minio-go/v7/pkg/s3utils
+github.com/minio/minio-go/v7/pkg/set
+github.com/minio/minio-go/v7/pkg/signer
+github.com/minio/minio-go/v7/pkg/sse
+github.com/minio/minio-go/v7/pkg/tags
+# github.com/minio/sha256-simd v0.1.1
+## explicit; go 1.12
+github.com/minio/sha256-simd
+# github.com/mitchellh/go-homedir v1.1.0
+## explicit
+github.com/mitchellh/go-homedir
 # github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd
 ## explicit
 github.com/modern-go/concurrent
@@ -82,9 +110,16 @@ github.com/modern-go/reflect2
 # github.com/pkg/errors v0.9.1
 ## explicit
 github.com/pkg/errors
+# github.com/rs/xid v1.2.1
+## explicit
+github.com/rs/xid
 # github.com/spf13/pflag v1.0.5
 ## explicit; go 1.12
 github.com/spf13/pflag
+# golang.org/x/crypto v0.0.0-20210817164053-32db794688a5
+## explicit; go 1.17
+golang.org/x/crypto/argon2
+golang.org/x/crypto/blake2b
 # golang.org/x/mod v0.4.2
 ## explicit; go 1.12
 golang.org/x/mod/module
@@ -97,12 +132,14 @@ golang.org/x/net/http/httpguts
 golang.org/x/net/http2
 golang.org/x/net/http2/hpack
 golang.org/x/net/idna
+golang.org/x/net/publicsuffix
 # golang.org/x/oauth2 v0.0.0-20210819190943-2bc19b11175f
 ## explicit; go 1.11
 golang.org/x/oauth2
 golang.org/x/oauth2/internal
 # golang.org/x/sys v0.0.0-20210831042530-f4d43177bf5e
 ## explicit; go 1.17
+golang.org/x/sys/cpu
 golang.org/x/sys/execabs
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/plan9
@@ -188,6 +225,9 @@ google.golang.org/protobuf/types/known/timestamppb
 # gopkg.in/inf.v0 v0.9.1
 ## explicit
 gopkg.in/inf.v0
+# gopkg.in/ini.v1 v1.57.0
+## explicit
+gopkg.in/ini.v1
 # gopkg.in/yaml.v2 v2.4.0
 ## explicit; go 1.15
 gopkg.in/yaml.v2
@@ -282,6 +322,7 @@ k8s.io/apimachinery/pkg/util/errors
 k8s.io/apimachinery/pkg/util/framer
 k8s.io/apimachinery/pkg/util/intstr
 k8s.io/apimachinery/pkg/util/json
+k8s.io/apimachinery/pkg/util/managedfields
 k8s.io/apimachinery/pkg/util/mergepatch
 k8s.io/apimachinery/pkg/util/naming
 k8s.io/apimachinery/pkg/util/net
@@ -298,9 +339,200 @@ k8s.io/apimachinery/third_party/forked/golang/json
 k8s.io/apimachinery/third_party/forked/golang/reflect
 # k8s.io/client-go v0.23.5
 ## explicit; go 1.16
+k8s.io/client-go/applyconfigurations/admissionregistration/v1
+k8s.io/client-go/applyconfigurations/admissionregistration/v1beta1
+k8s.io/client-go/applyconfigurations/apiserverinternal/v1alpha1
+k8s.io/client-go/applyconfigurations/apps/v1
+k8s.io/client-go/applyconfigurations/apps/v1beta1
+k8s.io/client-go/applyconfigurations/apps/v1beta2
+k8s.io/client-go/applyconfigurations/autoscaling/v1
+k8s.io/client-go/applyconfigurations/autoscaling/v2
+k8s.io/client-go/applyconfigurations/autoscaling/v2beta1
+k8s.io/client-go/applyconfigurations/autoscaling/v2beta2
+k8s.io/client-go/applyconfigurations/batch/v1
+k8s.io/client-go/applyconfigurations/batch/v1beta1
+k8s.io/client-go/applyconfigurations/certificates/v1
+k8s.io/client-go/applyconfigurations/certificates/v1beta1
+k8s.io/client-go/applyconfigurations/coordination/v1
+k8s.io/client-go/applyconfigurations/coordination/v1beta1
+k8s.io/client-go/applyconfigurations/core/v1
+k8s.io/client-go/applyconfigurations/discovery/v1
+k8s.io/client-go/applyconfigurations/discovery/v1beta1
+k8s.io/client-go/applyconfigurations/events/v1
+k8s.io/client-go/applyconfigurations/events/v1beta1
+k8s.io/client-go/applyconfigurations/extensions/v1beta1
+k8s.io/client-go/applyconfigurations/flowcontrol/v1alpha1
+k8s.io/client-go/applyconfigurations/flowcontrol/v1beta1
+k8s.io/client-go/applyconfigurations/flowcontrol/v1beta2
+k8s.io/client-go/applyconfigurations/internal
+k8s.io/client-go/applyconfigurations/meta/v1
+k8s.io/client-go/applyconfigurations/networking/v1
+k8s.io/client-go/applyconfigurations/networking/v1beta1
+k8s.io/client-go/applyconfigurations/node/v1
+k8s.io/client-go/applyconfigurations/node/v1alpha1
+k8s.io/client-go/applyconfigurations/node/v1beta1
+k8s.io/client-go/applyconfigurations/policy/v1
+k8s.io/client-go/applyconfigurations/policy/v1beta1
+k8s.io/client-go/applyconfigurations/rbac/v1
+k8s.io/client-go/applyconfigurations/rbac/v1alpha1
+k8s.io/client-go/applyconfigurations/rbac/v1beta1
+k8s.io/client-go/applyconfigurations/scheduling/v1
+k8s.io/client-go/applyconfigurations/scheduling/v1alpha1
+k8s.io/client-go/applyconfigurations/scheduling/v1beta1
+k8s.io/client-go/applyconfigurations/storage/v1
+k8s.io/client-go/applyconfigurations/storage/v1alpha1
+k8s.io/client-go/applyconfigurations/storage/v1beta1
 k8s.io/client-go/discovery
 k8s.io/client-go/discovery/fake
+k8s.io/client-go/informers
+k8s.io/client-go/informers/admissionregistration
+k8s.io/client-go/informers/admissionregistration/v1
+k8s.io/client-go/informers/admissionregistration/v1beta1
+k8s.io/client-go/informers/apiserverinternal
+k8s.io/client-go/informers/apiserverinternal/v1alpha1
+k8s.io/client-go/informers/apps
+k8s.io/client-go/informers/apps/v1
+k8s.io/client-go/informers/apps/v1beta1
+k8s.io/client-go/informers/apps/v1beta2
+k8s.io/client-go/informers/autoscaling
+k8s.io/client-go/informers/autoscaling/v1
+k8s.io/client-go/informers/autoscaling/v2
+k8s.io/client-go/informers/autoscaling/v2beta1
+k8s.io/client-go/informers/autoscaling/v2beta2
+k8s.io/client-go/informers/batch
+k8s.io/client-go/informers/batch/v1
+k8s.io/client-go/informers/batch/v1beta1
+k8s.io/client-go/informers/certificates
+k8s.io/client-go/informers/certificates/v1
+k8s.io/client-go/informers/certificates/v1beta1
+k8s.io/client-go/informers/coordination
+k8s.io/client-go/informers/coordination/v1
+k8s.io/client-go/informers/coordination/v1beta1
+k8s.io/client-go/informers/core
+k8s.io/client-go/informers/core/v1
+k8s.io/client-go/informers/discovery
+k8s.io/client-go/informers/discovery/v1
+k8s.io/client-go/informers/discovery/v1beta1
+k8s.io/client-go/informers/events
+k8s.io/client-go/informers/events/v1
+k8s.io/client-go/informers/events/v1beta1
+k8s.io/client-go/informers/extensions
+k8s.io/client-go/informers/extensions/v1beta1
+k8s.io/client-go/informers/flowcontrol
+k8s.io/client-go/informers/flowcontrol/v1alpha1
+k8s.io/client-go/informers/flowcontrol/v1beta1
+k8s.io/client-go/informers/flowcontrol/v1beta2
+k8s.io/client-go/informers/internalinterfaces
+k8s.io/client-go/informers/networking
+k8s.io/client-go/informers/networking/v1
+k8s.io/client-go/informers/networking/v1beta1
+k8s.io/client-go/informers/node
+k8s.io/client-go/informers/node/v1
+k8s.io/client-go/informers/node/v1alpha1
+k8s.io/client-go/informers/node/v1beta1
+k8s.io/client-go/informers/policy
+k8s.io/client-go/informers/policy/v1
+k8s.io/client-go/informers/policy/v1beta1
+k8s.io/client-go/informers/rbac
+k8s.io/client-go/informers/rbac/v1
+k8s.io/client-go/informers/rbac/v1alpha1
+k8s.io/client-go/informers/rbac/v1beta1
+k8s.io/client-go/informers/scheduling
+k8s.io/client-go/informers/scheduling/v1
+k8s.io/client-go/informers/scheduling/v1alpha1
+k8s.io/client-go/informers/scheduling/v1beta1
+k8s.io/client-go/informers/storage
+k8s.io/client-go/informers/storage/v1
+k8s.io/client-go/informers/storage/v1alpha1
+k8s.io/client-go/informers/storage/v1beta1
+k8s.io/client-go/kubernetes
 k8s.io/client-go/kubernetes/scheme
+k8s.io/client-go/kubernetes/typed/admissionregistration/v1
+k8s.io/client-go/kubernetes/typed/admissionregistration/v1beta1
+k8s.io/client-go/kubernetes/typed/apiserverinternal/v1alpha1
+k8s.io/client-go/kubernetes/typed/apps/v1
+k8s.io/client-go/kubernetes/typed/apps/v1beta1
+k8s.io/client-go/kubernetes/typed/apps/v1beta2
+k8s.io/client-go/kubernetes/typed/authentication/v1
+k8s.io/client-go/kubernetes/typed/authentication/v1beta1
+k8s.io/client-go/kubernetes/typed/authorization/v1
+k8s.io/client-go/kubernetes/typed/authorization/v1beta1
+k8s.io/client-go/kubernetes/typed/autoscaling/v1
+k8s.io/client-go/kubernetes/typed/autoscaling/v2
+k8s.io/client-go/kubernetes/typed/autoscaling/v2beta1
+k8s.io/client-go/kubernetes/typed/autoscaling/v2beta2
+k8s.io/client-go/kubernetes/typed/batch/v1
+k8s.io/client-go/kubernetes/typed/batch/v1beta1
+k8s.io/client-go/kubernetes/typed/certificates/v1
+k8s.io/client-go/kubernetes/typed/certificates/v1beta1
+k8s.io/client-go/kubernetes/typed/coordination/v1
+k8s.io/client-go/kubernetes/typed/coordination/v1beta1
+k8s.io/client-go/kubernetes/typed/core/v1
+k8s.io/client-go/kubernetes/typed/discovery/v1
+k8s.io/client-go/kubernetes/typed/discovery/v1beta1
+k8s.io/client-go/kubernetes/typed/events/v1
+k8s.io/client-go/kubernetes/typed/events/v1beta1
+k8s.io/client-go/kubernetes/typed/extensions/v1beta1
+k8s.io/client-go/kubernetes/typed/flowcontrol/v1alpha1
+k8s.io/client-go/kubernetes/typed/flowcontrol/v1beta1
+k8s.io/client-go/kubernetes/typed/flowcontrol/v1beta2
+k8s.io/client-go/kubernetes/typed/networking/v1
+k8s.io/client-go/kubernetes/typed/networking/v1beta1
+k8s.io/client-go/kubernetes/typed/node/v1
+k8s.io/client-go/kubernetes/typed/node/v1alpha1
+k8s.io/client-go/kubernetes/typed/node/v1beta1
+k8s.io/client-go/kubernetes/typed/policy/v1
+k8s.io/client-go/kubernetes/typed/policy/v1beta1
+k8s.io/client-go/kubernetes/typed/rbac/v1
+k8s.io/client-go/kubernetes/typed/rbac/v1alpha1
+k8s.io/client-go/kubernetes/typed/rbac/v1beta1
+k8s.io/client-go/kubernetes/typed/scheduling/v1
+k8s.io/client-go/kubernetes/typed/scheduling/v1alpha1
+k8s.io/client-go/kubernetes/typed/scheduling/v1beta1
+k8s.io/client-go/kubernetes/typed/storage/v1
+k8s.io/client-go/kubernetes/typed/storage/v1alpha1
+k8s.io/client-go/kubernetes/typed/storage/v1beta1
+k8s.io/client-go/listers/admissionregistration/v1
+k8s.io/client-go/listers/admissionregistration/v1beta1
+k8s.io/client-go/listers/apiserverinternal/v1alpha1
+k8s.io/client-go/listers/apps/v1
+k8s.io/client-go/listers/apps/v1beta1
+k8s.io/client-go/listers/apps/v1beta2
+k8s.io/client-go/listers/autoscaling/v1
+k8s.io/client-go/listers/autoscaling/v2
+k8s.io/client-go/listers/autoscaling/v2beta1
+k8s.io/client-go/listers/autoscaling/v2beta2
+k8s.io/client-go/listers/batch/v1
+k8s.io/client-go/listers/batch/v1beta1
+k8s.io/client-go/listers/certificates/v1
+k8s.io/client-go/listers/certificates/v1beta1
+k8s.io/client-go/listers/coordination/v1
+k8s.io/client-go/listers/coordination/v1beta1
+k8s.io/client-go/listers/core/v1
+k8s.io/client-go/listers/discovery/v1
+k8s.io/client-go/listers/discovery/v1beta1
+k8s.io/client-go/listers/events/v1
+k8s.io/client-go/listers/events/v1beta1
+k8s.io/client-go/listers/extensions/v1beta1
+k8s.io/client-go/listers/flowcontrol/v1alpha1
+k8s.io/client-go/listers/flowcontrol/v1beta1
+k8s.io/client-go/listers/flowcontrol/v1beta2
+k8s.io/client-go/listers/networking/v1
+k8s.io/client-go/listers/networking/v1beta1
+k8s.io/client-go/listers/node/v1
+k8s.io/client-go/listers/node/v1alpha1
+k8s.io/client-go/listers/node/v1beta1
+k8s.io/client-go/listers/policy/v1
+k8s.io/client-go/listers/policy/v1beta1
+k8s.io/client-go/listers/rbac/v1
+k8s.io/client-go/listers/rbac/v1alpha1
+k8s.io/client-go/listers/rbac/v1beta1
+k8s.io/client-go/listers/scheduling/v1
+k8s.io/client-go/listers/scheduling/v1alpha1
+k8s.io/client-go/listers/scheduling/v1beta1
+k8s.io/client-go/listers/storage/v1
+k8s.io/client-go/listers/storage/v1alpha1
+k8s.io/client-go/listers/storage/v1beta1
 k8s.io/client-go/pkg/apis/clientauthentication
 k8s.io/client-go/pkg/apis/clientauthentication/install
 k8s.io/client-go/pkg/apis/clientauthentication/v1
@@ -315,6 +547,7 @@ k8s.io/client-go/tools/cache
 k8s.io/client-go/tools/clientcmd/api
 k8s.io/client-go/tools/metrics
 k8s.io/client-go/tools/pager
+k8s.io/client-go/tools/reference
 k8s.io/client-go/transport
 k8s.io/client-go/util/cert
 k8s.io/client-go/util/connrotation
@@ -377,6 +610,7 @@ k8s.io/kube-openapi/cmd/openapi-gen/args
 k8s.io/kube-openapi/pkg/common
 k8s.io/kube-openapi/pkg/generators
 k8s.io/kube-openapi/pkg/generators/rules
+k8s.io/kube-openapi/pkg/schemaconv
 k8s.io/kube-openapi/pkg/util/proto
 k8s.io/kube-openapi/pkg/util/sets
 k8s.io/kube-openapi/pkg/validation/spec
@@ -395,6 +629,9 @@ sigs.k8s.io/json
 sigs.k8s.io/json/internal/golang/encoding/json
 # sigs.k8s.io/structured-merge-diff/v4 v4.2.1
 ## explicit; go 1.13
+sigs.k8s.io/structured-merge-diff/v4/fieldpath
+sigs.k8s.io/structured-merge-diff/v4/schema
+sigs.k8s.io/structured-merge-diff/v4/typed
 sigs.k8s.io/structured-merge-diff/v4/value
 # sigs.k8s.io/yaml v1.2.0
 ## explicit; go 1.12
