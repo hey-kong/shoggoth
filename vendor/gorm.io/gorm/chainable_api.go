@@ -50,17 +50,15 @@ func (db *DB) Table(name string, args ...interface{}) (tx *DB) {
 		tx.Statement.TableExpr = &clause.Expr{SQL: name, Vars: args}
 		if results := tableRegexp.FindStringSubmatch(name); len(results) == 2 {
 			tx.Statement.Table = results[1]
+			return
 		}
 	} else if tables := strings.Split(name, "."); len(tables) == 2 {
 		tx.Statement.TableExpr = &clause.Expr{SQL: tx.Statement.Quote(name)}
 		tx.Statement.Table = tables[1]
-	} else if name != "" {
-		tx.Statement.TableExpr = &clause.Expr{SQL: tx.Statement.Quote(name)}
-		tx.Statement.Table = name
-	} else {
-		tx.Statement.TableExpr = nil
-		tx.Statement.Table = ""
+		return
 	}
+
+	tx.Statement.Table = name
 	return
 }
 
@@ -95,15 +93,10 @@ func (db *DB) Select(query interface{}, args ...interface{}) (tx *DB) {
 		}
 		delete(tx.Statement.Clauses, "SELECT")
 	case string:
-		if strings.Count(v, "?") >= len(args) && len(args) > 0 {
+		if (strings.Contains(v, " ?") || strings.Contains(v, "(?")) && len(args) > 0 {
 			tx.Statement.AddClause(clause.Select{
 				Distinct:   db.Statement.Distinct,
 				Expression: clause.Expr{SQL: v, Vars: args},
-			})
-		} else if strings.Count(v, "@") > 0 && len(args) > 0 {
-			tx.Statement.AddClause(clause.Select{
-				Distinct:   db.Statement.Distinct,
-				Expression: clause.NamedExpr{SQL: v, Vars: args},
 			})
 		} else {
 			tx.Statement.Selects = []string{v}
@@ -174,19 +167,8 @@ func (db *DB) Or(query interface{}, args ...interface{}) (tx *DB) {
 // Joins specify Joins conditions
 //     db.Joins("Account").Find(&user)
 //     db.Joins("JOIN emails ON emails.user_id = users.id AND emails.email = ?", "jinzhu@example.org").Find(&user)
-//     db.Joins("Account", DB.Select("id").Where("user_id = users.id AND name = ?", "someName").Model(&Account{}))
 func (db *DB) Joins(query string, args ...interface{}) (tx *DB) {
 	tx = db.getInstance()
-
-	if len(args) == 1 {
-		if db, ok := args[0].(*DB); ok {
-			if where, ok := db.Statement.Clauses["WHERE"].Expression.(clause.Where); ok {
-				tx.Statement.Joins = append(tx.Statement.Joins, join{Name: query, Conds: args, On: &where})
-				return
-			}
-		}
-	}
-
 	tx.Statement.Joins = append(tx.Statement.Joins, join{Name: query, Conds: args})
 	return
 }
@@ -222,14 +204,12 @@ func (db *DB) Order(value interface{}) (tx *DB) {
 		tx.Statement.AddClause(clause.OrderBy{
 			Columns: []clause.OrderByColumn{v},
 		})
-	case string:
-		if v != "" {
-			tx.Statement.AddClause(clause.OrderBy{
-				Columns: []clause.OrderByColumn{{
-					Column: clause.Column{Name: v, Raw: true},
-				}},
-			})
-		}
+	default:
+		tx.Statement.AddClause(clause.OrderBy{
+			Columns: []clause.OrderByColumn{{
+				Column: clause.Column{Name: fmt.Sprint(value), Raw: true},
+			}},
+		})
 	}
 	return
 }
@@ -260,10 +240,11 @@ func (db *DB) Offset(offset int) (tx *DB) {
 //     }
 //
 //     db.Scopes(AmountGreaterThan1000, OrderStatus([]string{"paid", "shipped"})).Find(&orders)
-func (db *DB) Scopes(funcs ...func(*DB) *DB) (tx *DB) {
-	tx = db.getInstance()
-	tx.Statement.scopes = append(tx.Statement.scopes, funcs...)
-	return tx
+func (db *DB) Scopes(funcs ...func(*DB) *DB) *DB {
+	for _, f := range funcs {
+		db = f(db)
+	}
+	return db
 }
 
 // Preload preload associations with given conditions
