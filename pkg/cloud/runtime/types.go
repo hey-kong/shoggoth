@@ -26,8 +26,8 @@ import (
 	kubeinformers "k8s.io/client-go/informers"
 	"k8s.io/client-go/kubernetes"
 
-	sednaclientset "metaedge/pkg/client/clientset/versioned"
-	sednainformers "metaedge/pkg/client/informers/externalversions"
+	metaedgeclientset "metaedge/pkg/client/clientset/versioned"
+	metaedgeinformers "metaedge/pkg/client/informers/externalversions"
 	"metaedge/pkg/cloud/config"
 )
 
@@ -45,13 +45,13 @@ const (
 	InferencePodType = "inference"
 
 	// AnnotationsKeyPrefix defines prefix of key in annotations
-	AnnotationsKeyPrefix = "sedna.io/"
+	AnnotationsKeyPrefix = "metaedge.io/"
 
-	ModelHotUpdateHostPrefix      = "/var/lib/sedna/model-hot-update"
+	ModelHotUpdateHostPrefix      = "/var/lib/metaedge/model-hot-update"
 	ModelHotUpdateContainerPrefix = "/model-hot-update"
-	ModelHotUpdateVolumeName      = "sedna-model-hot-update-volume"
+	ModelHotUpdateVolumeName      = "metaedge-model-hot-update-volume"
 	ModelHotUpdateConfigFile      = "model_config.json"
-	ModelHotUpdateAnnotationsKey  = "sedna.io/model-hot-update-config"
+	ModelHotUpdateAnnotationsKey  = "metaedge.io/model-hot-update-config"
 )
 
 type Model struct {
@@ -104,6 +104,6 @@ type ControllerContext struct {
 	KubeClient          kubernetes.Interface
 	KubeInformerFactory kubeinformers.SharedInformerFactory
 
-	SednaClient          sednaclientset.Interface
-	SednaInformerFactory sednainformers.SharedInformerFactory
+	MetaedgeClient          metaedgeclientset.Interface
+	MetaedgeInformerFactory metaedgeinformers.SharedInformerFactory
 }
