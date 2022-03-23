@@ -37,7 +37,7 @@ func (c *Controller) syncToEdge(eventType watch.EventType, obj interface{}) erro
 	// more details at https://github.com/kubernetes/kubernetes/issues/3030
 	dataset.Kind = KindName
 
-	// Here only propagate to the nodes with non empty name
+	// Here only propagate to the nodes with non-empty name
 	nodeName := dataset.Spec.NodeName
 	if len(nodeName) == 0 {
 		return fmt.Errorf("empty node name")

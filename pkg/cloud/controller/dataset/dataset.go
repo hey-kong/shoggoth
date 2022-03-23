@@ -36,11 +36,12 @@ const (
 
 // Controller handles all dataset objects including: syncing to edge and update from edge.
 type Controller struct {
+	// kubeClient is a standard kubernetes client
 	kubeClient kubernetes.Interface
-	client     metaedgeclientset.MetaedgeV1alpha1Interface
+	// client is a clientset for metaedge API group
+	client metaedgeclientset.MetaedgeV1alpha1Interface
 
-	cfg *config.ControllerConfig
-
+	cfg            *config.ControllerConfig
 	sendToEdgeFunc runtime.DownstreamSendFunc
 }
 
@@ -51,20 +52,18 @@ func (c *Controller) Run(stopCh <-chan struct{}) {
 // New creates a dataset controller
 func New(cc *runtime.ControllerContext) (runtime.FeatureControllerI, error) {
 	c := &Controller{
-		client:     cc.MetaedgeClient.MetaedgeV1alpha1(),
 		kubeClient: cc.KubeClient,
+		client:     cc.MetaedgeClient.MetaedgeV1alpha1(),
 	}
+
 	informer := cc.MetaedgeInformerFactory.Metaedge().V1alpha1().Datasets().Informer()
 	informer.AddEventHandler(cache.ResourceEventHandlerFuncs{
-
 		AddFunc: func(obj interface{}) {
 			c.syncToEdge(watch.Added, obj)
 		},
-
 		UpdateFunc: func(old, cur interface{}) {
 			c.syncToEdge(watch.Added, cur)
 		},
-
 		DeleteFunc: func(obj interface{}) {
 			c.syncToEdge(watch.Deleted, obj)
 		},

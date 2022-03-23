@@ -3,6 +3,7 @@ module metaedge
 go 1.17
 
 require (
+	github.com/gorilla/websocket v1.4.2
 	github.com/minio/minio-go/v7 v7.0.10
 	gorm.io/driver/sqlite v1.1.4
 	gorm.io/gorm v1.20.9
