@@ -3,14 +3,18 @@ module metaedge
 go 1.17
 
 require (
+	github.com/emicklei/go-restful v2.9.5+incompatible
 	github.com/gorilla/websocket v1.4.2
 	github.com/minio/minio-go/v7 v7.0.10
+	github.com/spf13/cobra v1.1.1
+	github.com/spf13/pflag v1.0.5
 	gorm.io/driver/sqlite v1.1.4
 	gorm.io/gorm v1.20.9
 	k8s.io/api v0.21.4
 	k8s.io/apimachinery v0.21.4
 	k8s.io/client-go v0.21.4
 	k8s.io/code-generator v0.21.4
+	k8s.io/component-base v0.21.4
 	k8s.io/klog/v2 v2.8.0
 	k8s.io/kubernetes v1.21.4
 	sigs.k8s.io/yaml v1.2.0
@@ -51,7 +55,6 @@ require (
 	github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/docker/distribution v2.7.1+incompatible // indirect
-	github.com/emicklei/go-restful v2.9.5+incompatible // indirect
 	github.com/evanphx/json-patch v4.9.0+incompatible // indirect
 	github.com/go-logr/logr v0.4.0 // indirect
 	github.com/go-openapi/jsonpointer v0.19.3 // indirect
@@ -67,6 +70,7 @@ require (
 	github.com/googleapis/gnostic v0.4.1 // indirect
 	github.com/hashicorp/golang-lru v0.5.1 // indirect
 	github.com/imdario/mergo v0.3.5 // indirect
+	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.1 // indirect
 	github.com/json-iterator/go v1.1.10 // indirect
@@ -81,7 +85,9 @@ require (
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rs/xid v1.2.1 // indirect
-	github.com/spf13/pflag v1.0.5 // indirect
+	go.uber.org/atomic v1.4.0 // indirect
+	go.uber.org/multierr v1.1.0 // indirect
+	go.uber.org/zap v1.10.0 // indirect
 	golang.org/x/crypto v0.0.0-20210220033148-5ea612d1eb83 // indirect
 	golang.org/x/mod v0.3.1-0.20200828183125-ce943fd02449 // indirect
 	golang.org/x/net v0.0.0-20210224082022-3d97a244fca7 // indirect
@@ -98,7 +104,6 @@ require (
 	gopkg.in/ini.v1 v1.57.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	k8s.io/apiserver v0.21.4 // indirect
-	k8s.io/component-base v0.21.4 // indirect
 	k8s.io/component-helpers v0.21.4 // indirect
 	k8s.io/gengo v0.0.0-20201214224949-b6c5ce23f027 // indirect
 	k8s.io/kube-openapi v0.0.0-20210305001622-591a79e4bda7 // indirect
