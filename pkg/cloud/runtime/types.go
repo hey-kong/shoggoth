@@ -54,17 +54,7 @@ const (
 	ModelHotUpdateAnnotationsKey  = "metaedge.io/model-hot-update-config"
 )
 
-type Model struct {
-	Format  string                 `json:"format,omitempty"`
-	URL     string                 `json:"url,omitempty"`
-	Metrics map[string]interface{} `json:"metrics,omitempty"`
-}
-
-func (m *Model) GetURL() string {
-	return m.URL
-}
-
-// CommonInterface describes the commom interface of CRs
+// CommonInterface describes the common interface of CRs
 type CommonInterface interface {
 	metav1.Object
 	schema.ObjectKind
