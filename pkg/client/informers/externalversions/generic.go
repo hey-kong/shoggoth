@@ -4,8 +4,8 @@ package externalversions
 
 import (
 	"fmt"
-	v1alpha1 "metaedge/pkg/apis/metaedge/v1alpha1"
 
+	v1alpha1 "github.com/hey-kong/shoggoth/pkg/apis/shoggoth/v1alpha1"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
 )
@@ -36,9 +36,9 @@ func (f *genericInformer) Lister() cache.GenericLister {
 // TODO extend this to unknown resources with a client pool
 func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource) (GenericInformer, error) {
 	switch resource {
-	// Group=metaedge.io, Version=v1alpha1
+	// Group=shoggoth.io, Version=v1alpha1
 	case v1alpha1.SchemeGroupVersion.WithResource("datasets"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Metaedge().V1alpha1().Datasets().Informer()}, nil
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Shoggoth().V1alpha1().Datasets().Informer()}, nil
 
 	}
 

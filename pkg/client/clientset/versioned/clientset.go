@@ -4,9 +4,9 @@ package versioned
 
 import (
 	"fmt"
-	metaedgev1alpha1 "metaedge/pkg/client/clientset/versioned/typed/metaedge/v1alpha1"
 	"net/http"
 
+	shoggothv1alpha1 "github.com/hey-kong/shoggoth/pkg/client/clientset/versioned/typed/shoggoth/v1alpha1"
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"
 	flowcontrol "k8s.io/client-go/util/flowcontrol"
@@ -14,19 +14,19 @@ import (
 
 type Interface interface {
 	Discovery() discovery.DiscoveryInterface
-	MetaedgeV1alpha1() metaedgev1alpha1.MetaedgeV1alpha1Interface
+	ShoggothV1alpha1() shoggothv1alpha1.ShoggothV1alpha1Interface
 }
 
 // Clientset contains the clients for groups. Each group has exactly one
 // version included in a Clientset.
 type Clientset struct {
 	*discovery.DiscoveryClient
-	metaedgeV1alpha1 *metaedgev1alpha1.MetaedgeV1alpha1Client
+	shoggothV1alpha1 *shoggothv1alpha1.ShoggothV1alpha1Client
 }
 
-// MetaedgeV1alpha1 retrieves the MetaedgeV1alpha1Client
-func (c *Clientset) MetaedgeV1alpha1() metaedgev1alpha1.MetaedgeV1alpha1Interface {
-	return c.metaedgeV1alpha1
+// ShoggothV1alpha1 retrieves the ShoggothV1alpha1Client
+func (c *Clientset) ShoggothV1alpha1() shoggothv1alpha1.ShoggothV1alpha1Interface {
+	return c.shoggothV1alpha1
 }
 
 // Discovery retrieves the DiscoveryClient
@@ -44,6 +44,10 @@ func (c *Clientset) Discovery() discovery.DiscoveryInterface {
 // where httpClient was generated with rest.HTTPClientFor(c).
 func NewForConfig(c *rest.Config) (*Clientset, error) {
 	configShallowCopy := *c
+
+	if configShallowCopy.UserAgent == "" {
+		configShallowCopy.UserAgent = rest.DefaultKubernetesUserAgent()
+	}
 
 	// share the transport between all clients
 	httpClient, err := rest.HTTPClientFor(&configShallowCopy)
@@ -69,7 +73,7 @@ func NewForConfigAndClient(c *rest.Config, httpClient *http.Client) (*Clientset,
 
 	var cs Clientset
 	var err error
-	cs.metaedgeV1alpha1, err = metaedgev1alpha1.NewForConfigAndClient(&configShallowCopy, httpClient)
+	cs.shoggothV1alpha1, err = shoggothv1alpha1.NewForConfigAndClient(&configShallowCopy, httpClient)
 	if err != nil {
 		return nil, err
 	}
@@ -94,7 +98,7 @@ func NewForConfigOrDie(c *rest.Config) *Clientset {
 // New creates a new Clientset for the given RESTClient.
 func New(c rest.Interface) *Clientset {
 	var cs Clientset
-	cs.metaedgeV1alpha1 = metaedgev1alpha1.New(c)
+	cs.shoggothV1alpha1 = shoggothv1alpha1.New(c)
 
 	cs.DiscoveryClient = discovery.NewDiscoveryClient(c)
 	return &cs

@@ -3,13 +3,13 @@
 package externalversions
 
 import (
-	versioned "metaedge/pkg/client/clientset/versioned"
-	internalinterfaces "metaedge/pkg/client/informers/externalversions/internalinterfaces"
-	metaedge "metaedge/pkg/client/informers/externalversions/metaedge"
 	reflect "reflect"
 	sync "sync"
 	time "time"
 
+	versioned "github.com/hey-kong/shoggoth/pkg/client/clientset/versioned"
+	internalinterfaces "github.com/hey-kong/shoggoth/pkg/client/informers/externalversions/internalinterfaces"
+	shoggoth "github.com/hey-kong/shoggoth/pkg/client/informers/externalversions/shoggoth"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -156,9 +156,9 @@ type SharedInformerFactory interface {
 	ForResource(resource schema.GroupVersionResource) (GenericInformer, error)
 	WaitForCacheSync(stopCh <-chan struct{}) map[reflect.Type]bool
 
-	Metaedge() metaedge.Interface
+	Shoggoth() shoggoth.Interface
 }
 
-func (f *sharedInformerFactory) Metaedge() metaedge.Interface {
-	return metaedge.New(f, f.namespace, f.tweakListOptions)
+func (f *sharedInformerFactory) Shoggoth() shoggoth.Interface {
+	return shoggoth.New(f, f.namespace, f.tweakListOptions)
 }

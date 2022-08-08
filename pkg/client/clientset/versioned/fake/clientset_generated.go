@@ -3,10 +3,9 @@
 package fake
 
 import (
-	clientset "metaedge/pkg/client/clientset/versioned"
-	metaedgev1alpha1 "metaedge/pkg/client/clientset/versioned/typed/metaedge/v1alpha1"
-	fakemetaedgev1alpha1 "metaedge/pkg/client/clientset/versioned/typed/metaedge/v1alpha1/fake"
-
+	clientset "github.com/hey-kong/shoggoth/pkg/client/clientset/versioned"
+	shoggothv1alpha1 "github.com/hey-kong/shoggoth/pkg/client/clientset/versioned/typed/shoggoth/v1alpha1"
+	fakeshoggothv1alpha1 "github.com/hey-kong/shoggoth/pkg/client/clientset/versioned/typed/shoggoth/v1alpha1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"
@@ -64,7 +63,7 @@ var (
 	_ testing.FakeClient  = &Clientset{}
 )
 
-// MetaedgeV1alpha1 retrieves the MetaedgeV1alpha1Client
-func (c *Clientset) MetaedgeV1alpha1() metaedgev1alpha1.MetaedgeV1alpha1Interface {
-	return &fakemetaedgev1alpha1.FakeMetaedgeV1alpha1{Fake: &c.Fake}
+// ShoggothV1alpha1 retrieves the ShoggothV1alpha1Client
+func (c *Clientset) ShoggothV1alpha1() shoggothv1alpha1.ShoggothV1alpha1Interface {
+	return &fakeshoggothv1alpha1.FakeShoggothV1alpha1{Fake: &c.Fake}
 }

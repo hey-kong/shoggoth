@@ -22,13 +22,10 @@ set -o pipefail
 # --output-base    because this script should also be able to run inside the vendor dir of
 #                  k8s.io/kubernetes. The output-base is needed for the generators to output into the vendor dir
 #                  instead of the $GOPATH directly. For normal projects this can be dropped.
-../vendor/k8s.io/code-generator/generate-groups.sh \
-  "deepcopy,client,informer,lister" \
-  metaedge/pkg/client metaedge/pkg/apis \
-  metaedge:v1alpha1 \
-  --go-header-file $(pwd)/boilerplate.go.txt \
-  --output-base $(pwd)/../../ \
-  -v 10
+ROOT_PACKAGE="github.com/hey-kong/shoggoth"
 
-# To use your own boilerplate text append:
-#   --go-header-file $(pwd)/boilerplate.go.txt
+chmod +x ../vendor/k8s.io/code-generator/generate-groups.sh
+
+../vendor/k8s.io/code-generator/generate-groups.sh all "$ROOT_PACKAGE/pkg/client" "$ROOT_PACKAGE/pkg/apis" "shoggoth:v1alpha1" \
+  --go-header-file $(pwd)/boilerplate.go.txt \
+  -v 10
